@@ -17,6 +17,21 @@ class UsersController < ApplicationController
   def show
     @items = @user.items.group('items.id')
   end
+  
+  def ownerrelationships
+    #@item= Item.find(params[:id]) 
+    
+    #@itemhave = @item.haves #ライクしてる関係だしてる
+    #@haveid = @itemhave.select("user_id")
+    #@users = User.where(:id => @haveid).reverse
+
+    
+    #@itemwant = @item.wants
+   # @wantid = @itemwant.select("user_id")
+    #@users = User.where(:id => @wantid).reverse
+    #binding.pry
+    #render 'users/show'
+  end
 
   private
   def set_user
