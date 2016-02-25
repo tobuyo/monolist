@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="container-inner inner-sm clearfix">
+    <div class="item-single-main">
+      <div class="image">
+        <div class="img-wrap">
+          <% if @item.large_image %>
+            <img src="<%= @item.large_image %>" />
+            <% else %>
+            <%= image_tag("no-image.png") %>
+            <% end %>
+        </div>
+      </div>
+      <div class="title">
+        <p class="title">
+            <%= @item.title %>
+          </p>
+      </div>
+      <%= render 'action' , item: @item %>
+    </div>
+    <div class="item-single-side">
+      <div class="side-box">
+        <h4 class="side-box-title">Haveしたユーザー</h4>
+        <div class="side-box-body">
+          <% # TODO Haveしたユーザー一覧 %>
+          <% @haveusers.each do |u| %>
+            <span class="gravatar"><%= link_to image_tag(gravatar_for u), './users/#{u.id}' %>
+              <%= gravatar_for u %>
+            </span>
+          <% end %>
+        </div>
+      </div>
+      <div class="side-box">
+        <h4 class="side-box-title">Wantしたユーザー</h4>
+        <div class="side-box-body">
+          <% # TODO Wantしたユーザー一覧 %>
+          <% @wantusers.each do |u| %>
+          <li class="clearfix">
+            <div><%= gravatar_for u %><%= u.name %></div>
+            <br>
+          </li>
+  
+          <% end %>
+        </div>
+      </div>
+      <div class="text-center">
+        <% #TODO 正しいリンク先に %>
+        <%= link_to(image_tag("amazon-button.png", {alt: "Amazon詳細ページへ"}), @item.detail_page_url) %>
+      </div>
+    </div>
+  </div>
+</div>

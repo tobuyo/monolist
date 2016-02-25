@@ -13,8 +13,22 @@ class ItemsController < ApplicationController
     end
   end
   
+  def ownerrelationships
+    
+  end
 
   def show
+    @item= Item.find(params[:id]) 
+    
+    @itemhave = @item.haves #ライクしてる関係だしてる
+    @haveid = @itemhave.select("user_id")
+    @haveusers = User.where(:id => @haveid).reverse
+
+    
+    @itemwant = @item.wants
+    @wantid = @itemwant.select("user_id")
+    @wantusers = User.where(:id => @wantid).reverse
+    #binding.pry
   end
 
   private
