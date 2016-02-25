@@ -48,6 +48,12 @@ class OwnershipsController < ApplicationController
     @item = Item.find(params[:item_id])
 
     # TODO 紐付けの解除。 
+    if params[:type] == "Have"
+    current_user.unhave(@item)
+    #binding.pry
+    else
+    current_user.unwant(@item)
+    end
     # params[:type]の値ににHavedボタンが押された時には「Have」,
     # Wantedボタンがされた時には「Want」が設定されています。
 
