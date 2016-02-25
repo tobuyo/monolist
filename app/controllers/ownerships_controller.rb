@@ -12,12 +12,15 @@ class OwnershipsController < ApplicationController
     if @item.new_record?
       begin
         # TODO 商品情報の取得 Amazon::Ecs.item_lookupを用いてください
-        response = {}
+        
+        response = Amazon::Ecs.item_lookup(@item.asin, { :response_group => 'Large' })
+        #binding.pry
       rescue Amazon::RequestError => e
         return render :js => "alert('#{e.message}')"
       end
 
       amazon_item       = response.items.first
+      #binding.pry
       @item.title        = amazon_item.get('ItemAttributes/Title')
       @item.small_image  = amazon_item.get("SmallImage/URL")
       @item.medium_image = amazon_item.get("MediumImage/URL")
@@ -28,6 +31,13 @@ class OwnershipsController < ApplicationController
     end
 
     # TODO ユーザにwant or haveを設定する
+    if params[:type] == "Have"
+    current_user.have(@item)
+    #binding.pry
+    else
+    current_user.want(@item)
+    end
+    
     # params[:type]の値ににHaveボタンが押された時には「Have」,
     # Wantボタンがされた時には「Want」が設定されています。
     
