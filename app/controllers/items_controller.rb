@@ -28,6 +28,8 @@ class ItemsController < ApplicationController
     @itemwant = @item.wants
     @wantid = @itemwant.select("user_id")
     @wantusers = User.where(:id => @wantid).reverse
+    
+    @title = @item.title
     #binding.pry
   end
 
