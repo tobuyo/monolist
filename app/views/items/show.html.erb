@@ -1,6 +1,6 @@
 <% content_for :head do %>
   <title><%= @title %></title>
-  <meta name=”description” content="@に関する情報です。この商品を欲しい人、持ってる人を表示しています。">
+  <meta name="description" content="<%= @title %>に関する情報です。この商品を欲しい人、持ってる人を表示しています。">
 <% end %>
 
 <div class="container">
@@ -28,7 +28,9 @@
         <div class="side-box-body">
           <% # TODO Haveしたユーザー一覧 %>
           <% @haveusers.each do |u| %>
-            <%= link_to gravatar_for(u), user_path(u) %>
+            <span class="gravatar">
+              <%= link_to gravatar_for(u, options = { size: 24 }), user_path(u) %>
+            </span>
           <% end %>
         </div>
       </div>
@@ -37,7 +39,7 @@
         <div class="side-box-body">
           <% # TODO Wantしたユーザー一覧 %>
           <% @wantusers.each do |u| %>
-            <%= link_to gravatar_for(u), user_path(u) %>
+            <%= link_to gravatar_for(u,  options = { size: 24 }), user_path(u) %>
           <% end %>
         </div>
       </div>
