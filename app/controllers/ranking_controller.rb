@@ -5,5 +5,6 @@ class RankingController < ApplicationController
     end
     
     def want
+        
     end
 end
