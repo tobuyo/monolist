@@ -30,12 +30,10 @@ class ItemsController < ApplicationController
     @wantusers = User.where(:id => @wantid).reverse
     
     @title = @item.title
-    #binding.pry
   end
 
   private
-  def set_item
-    @item = Item.find(params[:id])
-    #binding.pry
-  end
+   def set_item
+     @item = Item.find(params[:id])
+   end
 end
