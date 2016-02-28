@@ -8,7 +8,12 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
 
   resources :users
-  resources :ranking
+  resources :ranking do
+    collection do
+    get 'have' => 'ranking#have'
+    get 'want' => 'ranking#want'
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :ownerships, only: [:create, :destroy]
