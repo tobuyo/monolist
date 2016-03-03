@@ -1,4 +1,27 @@
 <% content_for :head do %>
   <title>Wantランキング</title>
-  <meta name="description" content="Wantランキングです">
+  <meta name="description" content="Wantランキング">
 <% end %>
+
+<div class="container">
+  <div class="container-inner inner-default clearfix">
+    <% @items.each_with_index do |item, index| %>
+      <div class="item-box">
+        <div class="image">
+          <div class="img-wrap">
+            <% if item.large_image %>
+            <img src="<%= item.large_image %>" alt="<%= item.title %>" />
+            <% else %>
+            <%= image_tag("no-image.png" , alt: item.title) %>
+            <% end %>
+          </div>
+        </div>
+        <div class="detail">
+          <p class="title">
+           【<%= index + 1 %>位】<%= item.title %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

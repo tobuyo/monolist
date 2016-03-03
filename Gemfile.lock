@@ -133,6 +133,9 @@ GEM
     rake (10.5.0)
     rdoc (4.2.2)
       json (~> 1.4)
+    redis (3.2.2)
+    redis-objects (1.2.0)
+      redis (>= 3.0.2)
     ref (2.0.0)
     ruby-hmac (0.4.0)
     sass (3.4.21)
@@ -191,6 +194,7 @@ DEPENDENCIES
   puma
   rails (= 4.2.5)
   rails_12factor
+  redis-objects (= 1.2.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
